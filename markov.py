@@ -2,6 +2,7 @@
 
 from random import choice
 
+prose = ''
 
 def open_and_read_file(file_path):
     """Take file path as string; return text as string.
@@ -15,39 +16,44 @@ def open_and_read_file(file_path):
 
 
 
-    # file_path = file_path.split()
-    # print(file_path)
+def make_chains(text_string):
+    """Take input text as string; return dictionary of Markov chains.
 
-# def make_chains(text_string):
-#     """Take input text as string; return dictionary of Markov chains.
+    A chain will be a key that consists of a tuple of (word1, word2)
+    and the value would be a list of the word(s) that follow those two
+    words in the input text.
 
-#     A chain will be a key that consists of a tuple of (word1, word2)
-#     and the value would be a list of the word(s) that follow those two
-#     words in the input text.
+    For example:
 
-#     For example:
+        >>> chains = make_chains('hi there mary hi there juanita')
 
-#         >>> chains = make_chains('hi there mary hi there juanita')
+    Each bigram (except the last) will be a key in chains:
 
-#     Each bigram (except the last) will be a key in chains:
+        >>> sorted(chains.keys())
+        [('hi', 'there'), ('mary', 'hi'), ('there', 'mary')]
 
-#         >>> sorted(chains.keys())
-#         [('hi', 'there'), ('mary', 'hi'), ('there', 'mary')]
+    Each item in chains is a list of all possible following words:
 
-#     Each item in chains is a list of all possible following words:
+        >>> chains[('hi', 'there')]
+        ['mary', 'juanita']
 
-#         >>> chains[('hi', 'there')]
-#         ['mary', 'juanita']
+        >>> chains[('there','juanita')]
+        [None]
+    """
 
-#         >>> chains[('there','juanita')]
-#         [None]
-#     """
+    chains = {}
+    text_list = text_string.split()
+    print(text_list)
 
-#     chains = {}
+    for i in text_list:
+        next_index = [i] + 1
+        key1 = split_lines[i]
+        print(key1)
+        key2 = split_lines[next_index]
+        print(key2)
+        # We need to add this too the dictionary still
 
-#     # your code goes here
-
-#     return chains
+    return chains
 
 
 # def make_text(chains):
