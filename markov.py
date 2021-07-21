@@ -2,7 +2,6 @@
 
 from random import choice
 
-prose = ''
 
 def open_and_read_file(file_path):
     """Take file path as string; return text as string.
@@ -16,7 +15,7 @@ def open_and_read_file(file_path):
 
 
 
-def make_chains(text_string):
+def make_chains(prose):
     """Take input text as string; return dictionary of Markov chains.
 
     A chain will be a key that consists of a tuple of (word1, word2)
@@ -42,16 +41,16 @@ def make_chains(text_string):
     """
 
     chains = {}
-    text_list = text_string.split()
-    print(text_list)
-
-    for i in text_list:
-        next_index = [i] + 1
-        key1 = split_lines[i]
-        print(key1)
-        key2 = split_lines[next_index]
-        print(key2)
-        # We need to add this too the dictionary still
+    prose = open_and_read_file(prose)
+    split_prose = prose.split()
+   
+    for i in range(len(split_prose) - 2):
+       key = (split_prose[i], split_prose[i + 1])
+       print(key)
+       value = (split_prose[i + 2])
+       print(value)
+       # count all instances of the word key and assign that as the value
+       # see prior lab wordcount.py and homework for more assistnace
 
     return chains
 
